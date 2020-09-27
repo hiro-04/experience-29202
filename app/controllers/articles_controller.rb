@@ -9,7 +9,13 @@ class ArticlesController < ApplicationController
   end
 
   def create
+   
     @article = Article.new(article_params)
+    if @article.save
+      redirect_to root_path
+    else
+      render:new
+    end
   end
 
   def edit
@@ -27,7 +33,8 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :category_id)
+    binding.pry
+    params.require(:article).permit(:title, :content, :category_id).merge(user_id: current_user.id)
   end
 
 end

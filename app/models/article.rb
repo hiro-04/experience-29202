@@ -7,6 +7,7 @@ class Article < ApplicationRecord
   with_options presence: true do
     validates :title
     validates :content
-    validates :category_id, numericality: { other_than: 1 }
+    validates :category
   end
+  validates :category_id, numericality: { other_than: 1 }
 end
