@@ -19,7 +19,7 @@
           記事の内容
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :content, class:"items-text", id:"item-info", placeholder:"記事の内容を自由に記述。" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :content, class:"articles-text", id:"item-info", placeholder:"記事の内容を自由に記述。" ,rows:"7" ,maxlength:"1000" %>
       </div>
     </div>
     <div class="articles-detail">
@@ -31,6 +31,9 @@
         </div>
         <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"article-category"}) %>
       </div>
+    </div>
+    <div class="post-btn-contents">
+      <%= f.submit "投稿する" ,class:"post-btn" %>
     </div>
   </div>
   <% end %>
