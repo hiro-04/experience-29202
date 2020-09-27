@@ -1,0 +1,30 @@
+<%= render "shared/header"%>
+<div class= 'main'>
+  <div class='title-contents'>
+    <h2 class='service-title'>
+      未だない体験を
+    </h2>
+    <p class='service-explain'>
+      体験を共有できるコミュニティ
+    </p>
+  </div>
+
+  <div class='article-contents'>
+    <h2 class='title'>投稿記事一覧</h2>
+    <%= link_to '#' do%>
+    <div class='post-btn'>
+      <span class='post-btn-text'>記事を投稿する</span>
+    </div>
+    <% end %>
+    <ul class='article-lists'>
+      <% @articles.each do |article| %>
+        <li class='list'>
+        <%= link_to '#' do %>
+          <div class='article-info'>
+            <h3 class='article-name'>
+              <%= article.title %>
+            </h3>
+          </div>
+        <% end %>
+      <% end %>
+</div>
