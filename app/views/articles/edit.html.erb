@@ -1,0 +1,40 @@
+<div class="articles-contents">
+  <header class="articles-header">
+    <%= link_to articles_path do %>
+      <span class="top-btn">TOPページへ戻る</span>
+    <% end %>
+  </header>
+  <div class="article-main">
+    <h2 class="article-title">記事の情報を入力</h2>
+    <%= form_with model:@article, local: true do |f| %>
+    
+    <div class="new-articles">
+      <div class="weight-bold-text">
+        記事のタイトル
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"articles-text", id:"article-name", placeholder:"記事タイトル（必須 40文字まで)", maxlength:"40" %>
+      <div class="articles-explain">
+        <div class="weight-bold-text">
+          記事の内容
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :content, class:"articles-text", id:"item-info", placeholder:"記事の内容を自由に記述。" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+    </div>
+    <div class="articles-detail">
+      <div class="weight-bold-text">記事の詳細</div>
+      <div class="form">
+        <div class="weight-bold-text">
+          カテゴリー
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"article-category"}) %>
+      </div>
+    </div>
+    <div class="post-btn-contents">
+      <%= f.submit "変更する" ,class:"post-btn" %>
+    </div>
+  </div>
+  <% end %>
+</div>
