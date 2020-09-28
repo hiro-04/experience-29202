@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only:[:show, :edit]
+  before_action :set_article, only:[:show, :edit, :update]
 
   def index
     @articles = Article.all
@@ -22,6 +22,11 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    if @article.update(article_params)
+      redirect_to root_path
+    else
+      render :ecit
+    end
   end
   
   def show
