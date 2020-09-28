@@ -24,4 +24,14 @@
          <%= link_to 'TOPページに戻る', articles_path,class:"article-red-btn"%>
         <% end %>
   </div>
+  <div class="container">
+    <% if current_user %>
+      <%= form_with model: @comment, local: true do |form| %>
+        <%= form.text_area :text, placeholder: "コメントする", rows: "2", class:"comment-btn" %>
+        <%= form.submit "コメント"%>
+      <% end %>
+    <% else %>
+      <strong><p> コメントするには新規登録orログインが必要です。</p></strong>
+    <% end %>
+  </div>
 </div>
