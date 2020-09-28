@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only:[:show, :edit]
 
   def index
     @articles = Article.all
@@ -9,7 +10,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-   
     @article = Article.new(article_params)
     if @article.save
       redirect_to root_path
@@ -33,8 +33,11 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    binding.pry
     params.require(:article).permit(:title, :content, :category_id).merge(user_id: current_user.id)
+  end
+
+  def set_article
+    @article = Article.find(params[:id])
   end
 
 end
