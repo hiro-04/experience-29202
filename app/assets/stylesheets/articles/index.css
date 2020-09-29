@@ -58,3 +58,8 @@ a {
 a:hover {
   color: #57C3E9;
 }
+
+.article-img {
+  width: 33vh;
+  height: 33vh;
+}

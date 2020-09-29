@@ -7,6 +7,19 @@
   <div class="article-main">
     <h2 class="article-title">記事の情報を入力</h2>
     <%= form_with model:@article, local: true do |f| %>
+   
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        投稿画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"article-image" %>
+      </div>
+    </div>
     
     <div class="new-articles">
       <div class="weight-bold-text">
