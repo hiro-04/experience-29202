@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_article, only:[:show, :edit, :update, :destory]
+  before_action :set_article, only: [:show, :edit, :update, :destory]
 
   def index
-    @articles = Article.order("created_at DESC")
+    @articles = Article.order('created_at DESC')
   end
 
   def new
@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to root_path
     else
-      render:new
+      render :new
     end
   end
 
@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
       render :ecit
     end
   end
-  
+
   def show
     @comment = Comment.new
     @comments = @article.comments.includes(:user)
@@ -52,5 +52,4 @@ class ArticlesController < ApplicationController
   def set_article
     @article = Article.find(params[:id])
   end
-
 end
