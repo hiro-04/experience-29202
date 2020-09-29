@@ -49,3 +49,12 @@
 .article-name {
   font-size: 2.5vh;
 }
+
+a {
+  text-decoration: none;
+  color:blue;
+}
+
+a:hover {
+  color: #57C3E9;
+}

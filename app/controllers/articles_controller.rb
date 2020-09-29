@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only:[:show, :edit, :update, :destory]
 
   def index
-    @articles = Article.all
+    @articles = Article.order("created_at DESC")
   end
 
   def new
@@ -31,6 +31,8 @@ class ArticlesController < ApplicationController
   end
   
   def show
+    @comment = Comment.new
+    @comments = @article.comments.includes(:user)
   end
 
   def destroy

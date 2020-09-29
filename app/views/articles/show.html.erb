@@ -1,3 +1,4 @@
+
 <div class="article-show">
   <div class="article-box">
     <h2 class="name">
@@ -8,9 +9,6 @@
         <span class="article-content">
           <%= @article.content%>
         </span>
-        <span class="article-post">
-          記事内容
-        </span>
       </div>
 
       <% if user_signed_in? && current_user.id == @article.user_id%>
@@ -19,9 +17,30 @@
         <%= link_to '削除', article_path(@article.id), method: :delete, class:'article-destroy' %>
         <% end %>
 
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
-        <% unless user_signed_in? && current_user.id == @article.user_id%>
-         <%= link_to 'TOPページに戻る', articles_path,class:"article-red-btn"%>
+  </div>
+  <div class="container">
+    <% if current_user %>
+      <%= form_with model:[@article, @comment], local: true do |form| %>
+       <div class="comment-posts"> 
+        <%= form.text_area :text, placeholder: "コメント内容を書く", class:"comment-size" %>
+       </div> 
+       <div class="comment-btn">
+        <%= form.submit "コメント", class:"comment-btn"%>
+       </div>
+      <% end %>
+    <% else %>
+      <strong><p> コメントするには新規登録orログインが必要です。</p></strong>
+    <% end %>
+    <div class="comments">
+      <h4>【コメント一覧】</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>:</strong>
+            <%= comment.text%>
+            </p>
         <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
