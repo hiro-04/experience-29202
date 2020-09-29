@@ -33,5 +33,13 @@
     <% else %>
       <strong><p> コメントするには新規登録orログインが必要です。</p></strong>
     <% end %>
+    <div class="comments">
+      <h4>【コメント一覧】</h4>
+      <%= if @comments.each do |comment| %>
+        <p>
+          <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %></strong>
+          <%= comment.text%>
+          </p>
+     </div>
   </div>
 </div>
