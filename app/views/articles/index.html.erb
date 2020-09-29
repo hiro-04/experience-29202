@@ -21,6 +21,9 @@
       <% @articles.each do |article| %>
         <li class='list'>
             <%= link_to article_path(article.id) do %>
+              <div class="article-imag-content">
+                <%#= image_tag article.image, class: "article-img"%>
+              </div>
               <div class='article-info'>
                 <h3 class='article-name'>
                   <%= article.title %>

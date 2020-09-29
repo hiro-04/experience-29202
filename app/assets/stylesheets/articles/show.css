@@ -54,6 +54,7 @@
 
 .or-text {
   font-size: 20px;
+  text-align: center;
 }
 
 .article-destroy {
@@ -63,4 +64,9 @@
   color: black;
   margin: 20px 0px;
   padding: 2vh 10vw;
+}
+
+.article-box-img {
+  width: 100vh;
+  height: 70vh;
 }
