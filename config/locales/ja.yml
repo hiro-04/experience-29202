@@ -10,5 +10,8 @@ ja:
        birthday: 誕生日
 
      article:
+       title: タイトル
+       content: 内容
+       category: カテゴリー
        text: テキスト
        image: 画像
