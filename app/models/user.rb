@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :articles
   has_many :comments
-  has_many :likes
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
 
   # user validation
   with_options presence: true do
