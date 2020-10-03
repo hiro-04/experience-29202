@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :articles
   has_many :comments
-  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :following, through: :active_relationships, source:followed
-  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: destroy
-  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :following_user, through: :follower, source: :followed
+  has_many :follower_user, through: :followed, source: :follower
 
   # user validation
   with_options presence: true do
@@ -23,23 +23,18 @@ class User < ApplicationRecord
   end
 
   # ユーザーをフォローする
-  def follow(other_user)
-    following << other_user
+  def follow(user_id)
+    following.create(followed_id: user_id)
   end
 
   # ユーザーをフォロー解除する
-  def unfollow(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy
+  def unfollow(user_id)
+    follower.find_by(followed_id: user_id).destroy
   end
 
   # 現在のユーザーがフォローしてたらtrueを返す
-  def following?(other_user)
-    following.include?(other_user)
-  end
-
-  #現在のユーザーがフォローされていたらtrueを返す
-  def followed_by?(other_user)
-    followers.include?(other_user)
+  def following?(user)
+    following_user.include?(user)
   end
 
 end
