@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :users 
   resources :articles do
     resources :comments
+    collection do
+      get 'search'
+    end
   end
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
