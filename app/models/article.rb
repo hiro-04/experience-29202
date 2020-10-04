@@ -12,4 +12,9 @@ class Article < ApplicationRecord
     validates :category
   end
   validates :category_id, numericality: { other_than: 1 }
+
+  def self.search(search)
+    search ? where('title LIKE ?', "%#{search}%") : all
+  end
+
 end
