@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destory]
 
   def index
-    @articles = Article.order('created_at DESC')
+    @articles = Article.order('created_at DESC').all.search(params[:search])
   end
 
   def new
@@ -35,9 +35,9 @@ class ArticlesController < ApplicationController
     @comments = @article.comments.includes(:user)
   end
 
-  def search
-    @articles = Article.search(params[:keyword])
-  end
+  # def search
+  #   @articles = Article.search(params[:keyword])
+  # end
 
   def destroy
     if @article.destroy
