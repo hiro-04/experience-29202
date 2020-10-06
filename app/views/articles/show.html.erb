@@ -1,38 +1,49 @@
+<%= render "shared/header" %>
 
-<div class="article-show">
+<%# 商品の概要 %>
+<div class="item-show">
   <div class="user-name">
     <%= link_to "#{@article.user.nickname}さんの記事", user_path, method: :get, class: "user_name" %>
   </div>
 
-  <div class="article-box">
-    <%= image_tag @article.image,class:"article-box-img"%>
-  </div>
-    <div class="article-img-box">
-
+  <div class="item-box">
     <h2 class="name">
-      <%= @article.title %>
+      <%= "記事名" %>
     </h2>
+    
+    <div class='item-img-content'>
+      <%= image_tag @article.image,class:"item-box-img" %>
+    </div>
 
-      <div class="article-content-box">
-        <span class="article-content">
-          <%= @article.content%>
-        </span>
+    <div class="item-title-box">
+      <span class="item-title">
+        <%= @article.title%>
+      </span>
+    </div>
+
+    <div class="item-content-box">
+      <span class="item-content">
+        <%= @article.content%>
+      </span>
+    </div>
+
+       <% if user_signed_in? && current_user.id == @article.user_id%>
+        <%= link_to '記事の編集', edit_article_path(@article.id), method: :get, class: "item-red-btn" %>
+        <p class='or-text'>or</p>
+        <%= link_to '削除', article_path(@article.id), method: :delete, class:'item-destroy' %>
+        <% end %>
+
+    <%#お気に入り？%>
+      <div class="favorite-btn">
+        <% if current_user.liked_by?(@article.id) %>
+            <%= link_to 'お気に入り解除', destroy_like_path(@article), method: :DELETE %><%= @article.likes.count %>
+        <% else %>
+            <%= link_to 'お気に入り登録', create_like_path(@article), method: :POST %><%= @article.likes.count %>
+        <% end %>
       </div>
-
-      <% if user_signed_in? && current_user.id == @article.user_id%>
-          <%= link_to '記事の編集', edit_article_path(@article.id), method: :get, class: "article-red-btn" %>
-          <p class='or-text'>or</p>
-          <%= link_to '削除', article_path(@article.id), method: :delete, class:'article-destroy' %>
-      <% end %>
-
-      <% if current_user.liked_by?(@article.id) %>
-          <%= link_to 'お気に入り解除', destroy_like_path(@article), method: :DELETE %><%= @article.likes.count %>
-      <% else %>
-          <%= link_to 'お気に入り登録', create_like_path(@article), method: :POST %><%= @article.likes.count %>
-      <% end %>
-
   </div>
-  <div class="container">
+
+  <div class="comment-box">
     <% if current_user %>
       <%= form_with model:[@article, @comment], local: true do |form| %>
        <div class="comment-posts"> 
@@ -57,4 +68,5 @@
       <% end %>
     </div>
   </div>
+
 </div>
