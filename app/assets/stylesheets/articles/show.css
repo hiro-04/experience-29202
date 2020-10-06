@@ -1,5 +1,12 @@
-.article-show {
-  background-color: white;
+/* 商品の概要 */
+
+.user-name {
+  font-size: 30px;
+  color: #6495ED;
+}
+
+.item-show {
+  background-color: #FFFAFA;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -7,8 +14,8 @@
   padding: 5vh 0;
 }
 
-.article-box {
-  background-color: #FFF;
+.item-box {
+  background-color: #FFFAFA;
   width: 70vw;
   min-width: 1200px;
   padding: 10vh 15vw;
@@ -17,56 +24,99 @@
   align-items: center;
 }
 
-.article-box>.name {
+.item-box>.name {
   text-align: center;
   font-weight: bold;
   font-size: 25px;
-  margin: 40px;
-  padding: 50px;
-
 }
 
-.article-box-content {
-  height: 50vh;
+.item-box-img {
+  height: 40vh;
   width: 60vw;
   min-height: 500px;
   background-color: rgb(205, 202, 202);
+  object-fit: contain;
 }
 
-.article-content-box>.article-content {
+.item-title-box {
+  margin: 25px 0px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.item-title-box>.item-title {
   font-size: 4vh;
   font-weight: bold;
 }
 
-.article-content-box>.article-post {
-  font-size: 16px;
+.item-content-box {
+  margin: 15px 0px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.article-red-btn {
+.item-content-box>.item-content {
+  font-size: 2.5vh;
+  font-weight: bold;
+}
+
+.item-red-btn {
   text-align: center;
-  background-color: #ea352d;
+  background-color: #6495ED;
   font-size: 24px;
   font-weight: bold;
   color: #FFF;
-  margin: 20px 0px;
-  padding: 2vh 10vw;
+  margin: 10px 0px;
+  padding: 1vh 5vw;
 }
 
 .or-text {
   font-size: 20px;
-  text-align: center;
 }
 
-.article-destroy {
+.item-destroy {
   background-color: lightgray;
   text-align: center;
   font-size: 24px;
   color: black;
-  margin: 20px 0px;
-  padding: 2vh 10vw;
+  margin: 10px 0px;
+  padding: 1vh 5vw;
 }
 
-.article-box-img {
-  width: 100vh;
-  height: 70vh;
+.favorite-btn {
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+
+/* /商品の概要 */
+
+.comment-box {
+  width: 40vw;
+  background-color: #FFFAFA;
+  margin: 5vh 0;
+  text-align: center;
+}
+
+.comment-posts{
+  text-align: center;
+  margin: auto;
+}
+
+.comment-btn {
+  line-height: 30px;
+  background-color: #6495ED;
+  border: 1px solid #6495ED;
+  color: #fff;
+  width: 30%;
+  min-width: 100px;
+  font-size: 22px;
+  border-radius: 70px;
+  margin: auto;
+}
+
+.favorite-btn {
+
 }

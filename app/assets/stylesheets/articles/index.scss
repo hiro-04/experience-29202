@@ -26,8 +26,13 @@
   line-height: 40px;
 }
 
+.title {
+  font-size: 150px;
+}
+
 .article-contents {
-  background-color: #FFF;
+  font-size: 30px;
+  background-color: #FFFAFA;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,19 +40,20 @@
 }
 
 .article-contents>.title {
-  font-size: 5vh;
+  font-size: 3vh;
   line-height: 1.4;
   font-weight: bold;
 }
 
 .article-info {
-  background-color: #FFF;
+  background-color: #FFFAFA	;
   color: black;
-  padding: 1vw;
+  padding: 0.5vw;
 }
 
 .article-name {
-  font-size: 2.5vh;
+  font-size: 2.3vh;
+  text-align: center;
 }
 
 a {
@@ -61,5 +67,25 @@ a:hover {
 
 .article-img {
   width: 33vh;
-  height: 33vh;
+  height: 30vh;
+}
+
+.article-img-content {
+  position: relative;
+  margin: 20px;
+}
+
+.article-lists {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}
+
+.post-btn-text {
+  background-color: #4169E1;
+  color: #f8f8f8;
+  margin: auto;
+  padding: 5px;
 }
