@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
+  has_many :likes
+  has_many :like_article, through: :likes
 
   # user validation
   with_options presence: true do
@@ -36,5 +38,9 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+
+  def liked_by?(article_id)
+    likes.where(article_id: article_id).exists?
+   end
 
 end
