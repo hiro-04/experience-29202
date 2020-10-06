@@ -20,10 +20,16 @@
       </div>
 
       <% if user_signed_in? && current_user.id == @article.user_id%>
-        <%= link_to '記事の編集', edit_article_path(@article.id), method: :get, class: "article-red-btn" %>
-        <p class='or-text'>or</p>
-        <%= link_to '削除', article_path(@article.id), method: :delete, class:'article-destroy' %>
-        <% end %>
+          <%= link_to '記事の編集', edit_article_path(@article.id), method: :get, class: "article-red-btn" %>
+          <p class='or-text'>or</p>
+          <%= link_to '削除', article_path(@article.id), method: :delete, class:'article-destroy' %>
+      <% end %>
+
+      <% if current_user.liked_by?(@article.id) %>
+          <%= link_to 'お気に入り解除', destroy_like_path(@article), method: :DELETE %><%= @article.likes.count %>
+      <% else %>
+          <%= link_to 'お気に入り登録', create_like_path(@article), method: :POST %><%= @article.likes.count %>
+      <% end %>
 
   </div>
   <div class="container">
