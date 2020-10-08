@@ -6,6 +6,7 @@
   </header>
   <div class="article-main">
     <h2 class="article-title">記事の情報を入力</h2>
+    <%= render 'shared/error_messages', model: @article %>
     <%= form_with model:@article, local: true do |f| %>
     
      <div class="img-upload">
@@ -26,13 +27,13 @@
         記事のタイトル
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :title, class:"articles-text", id:"article-name", placeholder:"記事タイトル（必須 40文字まで)", maxlength:"40" %>
+      <%= f.text_area :title, class:"articles-text", id:"article-name", placeholder:"記事タイトル（必須 14文字まで)", maxlength:"14" %>
       <div class="articles-explain">
         <div class="weight-bold-text">
           記事の内容
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :content, class:"articles-text", id:"article-info", placeholder:"記事の内容を自由に記述。" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :content, class:"articles-text", id:"article-info", placeholder:"記事の内容を自由に記述。" ,rows:"7" ,maxlength:"2000" %>
       </div>
     </div>
     <div class="articles-detail">

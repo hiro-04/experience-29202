@@ -46,7 +46,7 @@ Things you may want to cover:
 ## articleテーブル
 		
 | Column       | Type       | Options                           |
-| -------      | -----      | ------------                      |
+| -------------| -----------| ----------------------------------|
 | title        | string     | null: false                       |
 | content      | text       | null: false                       |
 | category     | integer    | null: false                       |
@@ -63,7 +63,7 @@ Things you may want to cover:
 ### commentsテーブル
 		
 | Column           | Type        | Options                         |
-| -------          | -----       | ------------                    |
+| ---------------- | ----------- | --------------------------------|
 | user             | references  | null: false  foreign_key: true  |
 | item             | references  | null: false  foreign_key: true  |
 		
@@ -75,10 +75,23 @@ Things you may want to cover:
 ### likesテーブル
 
 | Column           | Type        | Options                         |
-| -------          | -----       | ------------                    |
+| -----------------| ------------| --------------------------------|
 | user             | references  | null: false  foreign_key: true  |
 | item             | references  | null: false  foreign_key: true  |
 
 ### Association
 -belongs_to:user
 -belongs_to:item
+
+
+### relationshipsテーブル
+
+| Column           | Type        | Options                         |
+| -----------------| ------------| --------------------------------|
+| user             | references  | null: false  foreign_key: true  |
+| item             | references  | null: false  foreign_key: true  |
+
+
+### Association
+-belongs_to:follower
+-belongs_to:followed

@@ -2,8 +2,12 @@
 
 <%# 商品の概要 %>
 <div class="item-show">
+  <div class="top-page">
+    <%= link_to "TOPへ戻る", articles_path, method: :get, class: "user_name" %>
+  </div>
+
   <div class="user-name">
-    <%= link_to "#{@article.user.nickname}さんの記事", user_path, method: :get, class: "user_name" %>
+    <%= link_to "#{@article.user.nickname}さんの詳細", user_path, method: :get, class: "user_name" %>
   </div>
 
   <div class="item-box">
@@ -47,11 +51,11 @@
     <% if current_user %>
       <%= form_with model:[@article, @comment], local: true do |form| %>
        <div class="comment-posts"> 
-        <%= form.text_area :text, placeholder: "コメント内容を書く", class:"comment-size" %>
+        <%= form.text_area :text, placeholder: "コメント内容を書く", class:"comment-posts" %>
        </div> 
-       <div class="comment-btn">
+     <div class="comment-btn">
         <%= form.submit "コメント", class:"comment-btn"%>
-       </div>
+     </div>
       <% end %>
     <% else %>
       <strong><p> コメントするには新規登録orログインが必要です。</p></strong>
