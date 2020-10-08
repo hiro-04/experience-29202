@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
   def create
     if Comment.create(comment_params)
-      redirect_to root_path
+      redirect_to articles_path
     else
-      redirect_to aticle_path
+      redirect_to root_path
     end
   end
 

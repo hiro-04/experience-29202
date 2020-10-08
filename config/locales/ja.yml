@@ -12,6 +12,6 @@ ja:
      article:
        title: タイトル
        content: 内容
-       category: カテゴリー
+       category_id: カテゴリー
        text: テキスト
        image: 画像
