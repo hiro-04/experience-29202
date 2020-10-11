@@ -7,7 +7,7 @@
   <div class="article-main">
     <h2 class="article-title">記事の情報を入力</h2>
     <%= form_with model:@article, local: true do |f| %>
-   
+   <%= render 'shared/error_messages', model: @article %>
     <div class="img-upload">
       <div class="weight-bold-text">
         投稿画像
